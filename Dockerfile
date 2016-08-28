@@ -21,7 +21,8 @@ RUN curl -L -O https://github.com/intelsdi-x/snap/releases/download/${SNAP_VER}/
     rm -rf snap-${SNAP_VER}
 
 # because alpine uses musl, we must explicitly launch this way
-ENV SNAP_AUTODISCOVER_PATH /snap/plugin
+EXPOSE 8181
+#ENV SNAP_AUTODISCOVER_PATH /snap/plugin
 ENTRYPOINT ["/lib/ld-musl-x86_64.so.1", "/snap/bin/snapd"]
 CMD ["--plugin-trust", "0", "--log-level", "1"]
 
