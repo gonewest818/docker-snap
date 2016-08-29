@@ -1,0 +1,12 @@
+FROM alpine:3.4
+ARG SNAP_VER
+ENV SNAP_VER ${SNAP_VER}
+
+RUN apk add --no-cache bash
+
+COPY build/src/github.com/intelsdi-x/snap/build /snap/
+
+EXPOSE 8181
+ENV SNAP_AUTODISCOVER_PATH /snap/plugin
+ENTRYPOINT ["/snap/bin/snapd"]
+CMD ["--plugin-trust", "0", "--log-level", "1"]
