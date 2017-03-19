@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.5
 ARG SNAP_VER
 ENV SNAP_VER ${SNAP_VER}
 
@@ -8,5 +8,5 @@ COPY build/src/github.com/intelsdi-x/snap/build /snap/
 
 EXPOSE 8181
 ENV SNAP_AUTODISCOVER_PATH /snap/plugin
-ENTRYPOINT ["/snap/bin/snapd"]
+ENTRYPOINT ["/snap/linux/x86_64/snapteld"]
 CMD ["--plugin-trust", "0", "--log-level", "1"]

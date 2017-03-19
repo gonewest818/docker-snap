@@ -1,4 +1,13 @@
-FROM alpine:3.4
+FROM alpine:3.5
 
-RUN apk add --no-cache go make git bash curl tar gzip
+RUN apk add --no-cache \
+      bash \
+      curl \
+      git \
+      go \
+      gzip \
+      make \
+      musl-dev \
+      tar
+
 ENV GOPATH /mnt/build
